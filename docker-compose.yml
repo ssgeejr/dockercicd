@@ -1,16 +1,19 @@
 #https://docs.docker.com/compose/compose-file/
-version: "3.7"
+#   image: jenkins/jenkins:2.60.3
+version: "3.3"
 
 services:
   jenkins:
    container_name: jenkins
-   image: jenkins/jenkins:2.60.3
+   image: jenkins/jenkins:2.183
    ports:
 #   - "443:443"
     - "8080:8080"
-   deploy:
-    restart_policy:
-      condition: on-failure
-      delay: 5s
-      max_attempts: 3
-#      window: 120s
+   volumes:
+    - /opt/cicd/jenkins:/var/jenkins_home
+#   deploy:
+#    restart_policy:
+#      condition: on-failure
+#      delay: 5s
+#      max_attempts: 3
+##      window: 120s

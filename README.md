@@ -3,13 +3,18 @@ End-to-End Prototype for Jenkins to build Docker images within a docker jenkins 
 
 A Jenkins Docker image with plugins to build docker images
 
- 
+```
+sudo useradd -u 1000 jenkins
+sudo rm -rf /opt/cicd/jenkins
+sudo mkdir /opt/cicd/jenkins
+sudo chown -R jenkins:jenkins /opt/cicd/jenkins
+```
 
 chown 1000
 sudo rm -rf /opt/cicd/jenkins
 sudo mkdir /opt/cicd/jenkins
 sudo chown 1000 /opt/cicd/jenkins
-docker run -it -p 8080:8080 --name jenkins -v /opt/cicd/jenkins:/var/jenkins_home:z jenkins/jenkins
+docker run -it -p 8080:8080 --name jenkins -v /opt/cicd/jenkins:/var/jenkins_home:z jenkins/jenkins:2.183
 
 "Volumes": {
 	"/var/jenkins_home": {}
@@ -28,6 +33,7 @@ docker run -it -p 8080:8080 --name jenkins -v /opt/cicd/jenkins:/var/jenkins_hom
 	"JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental",
 	"JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals",
 	"COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log"
+
 
 
 
