@@ -1,0 +1,16 @@
+#https://docs.docker.com/compose/compose-file/
+version: "3.7"
+
+services:
+  jenkins:
+   container_name: jenkins
+   image: jenkins/jenkins:2.60.3
+   ports:
+#   - "443:443"
+    - "8080:8080"
+   deploy:
+    restart_policy:
+      condition: on-failure
+      delay: 5s
+      max_attempts: 3
+#      window: 120s
